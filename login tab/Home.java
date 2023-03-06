@@ -2,6 +2,8 @@ package feb23;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +16,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Dialog.ModalExclusionType;
+import javax.swing.JCheckBox;
 
 public class Home implements ActionListener  {
 
@@ -68,6 +71,19 @@ public class Home implements ActionListener  {
 		lblNewLabel.setBounds(41, 41, 206, 39);
 		panel.add(lblNewLabel);
 		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Show Password");
+		chckbxNewCheckBox.setBounds(20, 200, 97, 23);
+		panel.add(chckbxNewCheckBox);
+		chckbxNewCheckBox.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (chckbxNewCheckBox.isSelected()) {
+				      passwordText.setEchoChar((char)0); //password = JPasswordField
+				   } else {
+					   passwordText.setEchoChar('\u25cf');
+				   }
+			}
+		});
 		frmHttpswwwfacebookcomhomephp.setVisible(true);
 	}
 
